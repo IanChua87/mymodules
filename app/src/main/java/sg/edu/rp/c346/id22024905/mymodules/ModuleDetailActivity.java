@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class ModuleDetailActivity extends AppCompatActivity {
@@ -14,6 +16,7 @@ public class ModuleDetailActivity extends AppCompatActivity {
     TextView tvmoduleSem;
     TextView tvmoduleCredit;
     TextView tvmoduleVenue;
+    Button btnGoBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +28,7 @@ public class ModuleDetailActivity extends AppCompatActivity {
         tvmoduleSem = findViewById(R.id.textViewSem);
         tvmoduleCredit = findViewById(R.id.textViewCredit);
         tvmoduleVenue = findViewById(R.id.textViewVenue);
+        btnGoBack = findViewById(R.id.buttonGoBack);
 
         Intent intentReceived = getIntent();
         String moduleCode = intentReceived.getStringExtra("moduleCode");
@@ -39,6 +43,13 @@ public class ModuleDetailActivity extends AppCompatActivity {
         tvmoduleCredit.setText("Module Credit: " + moduleCred);
         String moduleVenue = intentReceived.getStringExtra("moduleVenue");
         tvmoduleVenue.setText("Venue: " + moduleVenue);
+
+        btnGoBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
     }
